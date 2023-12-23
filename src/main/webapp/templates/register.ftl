@@ -25,6 +25,9 @@
                     <input type="password" name="confirmPassword" class="form-control" placeholder="Подтвердите пароль" required>
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">Зарегистрироваться</button>
+                <div class="mt-3">
+                    <p>Уже есть аккаунт? <a href="login" class="btn btn-link">Вход</a></p>
+                </div>
             </form>
         </div>
     </div>

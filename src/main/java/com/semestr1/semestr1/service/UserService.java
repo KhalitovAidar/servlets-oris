@@ -1,5 +1,6 @@
 package com.semestr1.semestr1.service;
 
+import com.semestr1.semestr1.exception.CanNotCreateUserException;
 import org.mapstruct.factory.Mappers;
 
 import com.semestr1.semestr1.dto.UserRequest;
@@ -9,6 +10,7 @@ import com.semestr1.semestr1.model.User;
 import com.semestr1.semestr1.repository.UserRepository;
 
 import java.util.Optional;
+import java.util.UUID;
 
 public class UserService {
     private UserRepository userRepository;
@@ -18,7 +20,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public Optional<UserResponse> create(UserRequest userRequest){
+    public UUID create(UserRequest userRequest) throws CanNotCreateUserException {
         User user = mapper.toEntity(userRequest);
         return userRepository.create(user);
     }

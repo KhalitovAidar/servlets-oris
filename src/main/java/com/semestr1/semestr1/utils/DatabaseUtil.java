@@ -24,22 +24,23 @@ public class DatabaseUtil {
         JdbcTemplate jdbcTemplate = null;
         try {
             Yaml yaml = new Yaml();
-            InputStream inputStream = DatabaseUtil.class.getResourceAsStream("properties.yml");
-            Map<String, Map<String, String>> yamlMap = yaml.load(inputStream);
-            Map<String, String> databaseProps = yamlMap.get("database");
+            try (InputStream inputStream = DatabaseUtil.class.getClassLoader().getResourceAsStream("properties.yml")) {
+                Map<String, Map<String, String>> yamlMap = yaml.load(inputStream);
+                Map<String, String> databaseProps = yamlMap.get("database");
 
-            String url = databaseProps.get("url");
-            String username = databaseProps.get("username");
-            String password = databaseProps.get("password");
-            String driver = databaseProps.get("driverClassName");
+                String url = databaseProps.get("url");
+                String username = databaseProps.get("username");
+                String password = databaseProps.get("password");
+                String driver = databaseProps.get("driverClassName");
 
-            DriverManagerDataSource dataSource = new DriverManagerDataSource();
-            dataSource.setDriverClassName(driver);
-            dataSource.setUrl(url);
-            dataSource.setUsername(username);
-            dataSource.setPassword(password);
+                DriverManagerDataSource dataSource = new DriverManagerDataSource();
+                dataSource.setDriverClassName(driver);
+                dataSource.setUrl(url);
+                dataSource.setUsername(username);
+                dataSource.setPassword(password);
 
-            jdbcTemplate = new JdbcTemplate(dataSource);
+                jdbcTemplate = new JdbcTemplate(dataSource);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
