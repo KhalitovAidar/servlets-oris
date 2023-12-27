@@ -1,5 +1,5 @@
 database:
   driverClassName: org.postgresql.Driver
-  url: jdbc:postgresql://localhost:5432/oris-semester
-  username: admin
-  password: admin123
+  url: jdbc:postgresql://localhost:5432/postgres
+  username: postgres
+  password: admin

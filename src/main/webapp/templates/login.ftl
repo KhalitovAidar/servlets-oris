@@ -11,9 +11,12 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <form action="register" method="post" class="mt-5">
+            <form action="login" method="post" class="mt-5">
                 <#if errorMessage??>
                     <p style="color: red;">${errorMessage}</p>
+                </#if>
+                <#if successMessage??>
+                    <p style="color: green;">${successMessage}</p>
                 </#if>
                 <div class="form-group">
                     <input type="text" name="username" id="username" class="form-control" placeholder="Имя пользователя" required>
